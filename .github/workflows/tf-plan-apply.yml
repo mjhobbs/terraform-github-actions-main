@@ -7,6 +7,10 @@ on:
   pull_request:
     branches:
     - main
+  #
+  # Allows deployment to be invoked manually through the GitHub Actions user interface.
+  #
+  workflow_dispatch: 
 
 #Special permissions required for OIDC authentication
 permissions:

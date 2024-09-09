@@ -38,27 +38,49 @@ resource "azurerm_container_registry" "container_registry" {
   sku                 = "Basic"
 }
 
-resource "azurerm_kubernetes_cluster" "cluster" {
-  name                = var.app_name
-  location            = var.location
-  #resource_group_name = azurerm_resource_group.rg-aks.name
-  resource_group_name = var.resource_group_name
-  dns_prefix          = var.app_name
-  kubernetes_version  = var.kubernetes_version
+
+resource "azurerm_kubernetes_cluster" "example" {
+  name                = "example-aks1"
+  location            = azurerm_resource_group.rg-aks.location
+  resource_group_name = azurerm_resource_group.rg-aks.name
+  dns_prefix          = "exampleaks1"
 
   default_node_pool {
-    name            = "default"
-    node_count      = 1
-    vm_size         = "Standard_B2s"
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_D2_v2"
   }
 
-  #
-  # Instead of creating a service principle have the system figure this out.
-  #
   identity {
     type = "SystemAssigned"
-  }    
+  }
+
+  tags = {
+    Environment = "Production"
+  }
 }
+
+# resource "azurerm_kubernetes_cluster" "cluster" {
+#   name                = var.app_name
+#   location            = var.location
+#   resource_group_name = azurerm_resource_group.rg-aks.name
+#   resource_group_name = var.resource_group_name
+#   dns_prefix          = var.app_name
+#   kubernetes_version  = var.kubernetes_version
+
+#   default_node_pool {
+#     name            = "default"
+#     node_count      = 1
+#     vm_size         = "Standard_B2s"
+#   }
+
+  
+#   Instead of creating a service principle have the system figure this out.
+  
+#   identity {
+#     type = "SystemAssigned"
+#   }    
+# }
 
 # #
 # # Attaches the container registry to the cluster.

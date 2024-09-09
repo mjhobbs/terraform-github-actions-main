@@ -47,16 +47,16 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   kubernetes_version  = var.kubernetes_version
 
   default_node_pool {
-      name            = "default"
-      node_count      = 1
-      vm_size         = "Standard_B2s"
+    name            = "default"
+    node_count      = 1
+    vm_size         = "Standard_B2s"
   }
 
   #
   # Instead of creating a service principle have the system figure this out.
   #
   identity {
-      type = "SystemAssigned"
+    type = "SystemAssigned"
   }    
 }
 

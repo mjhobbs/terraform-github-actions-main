@@ -41,8 +41,10 @@ resource "azurerm_container_registry" "container_registry" {
 
 resource "azurerm_kubernetes_cluster" "example" {
   name                = "example-aks1"
-  location            = azurerm_resource_group.rg-aks.location
-  resource_group_name = azurerm_resource_group.rg-aks.name
+  # location            = azurerm_resource_group.rg-aks.location
+  # resource_group_name = azurerm_resource_group.rg-aks.name
+  resource_group_name = var.resource_group_name
+  location            = var.location
   dns_prefix          = "exampleaks1"
 
   default_node_pool {

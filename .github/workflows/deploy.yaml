@@ -57,7 +57,8 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
           kubectl-version: v1.24.2
-      
+      - run: kubectl get pods
+
       #
       # Expands the configuration template and deploys the microservice.
       #

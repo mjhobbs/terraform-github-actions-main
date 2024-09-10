@@ -62,8 +62,4 @@ jobs:
       # Expands the configuration template and deploys the microservice.
       #
       - name: Deploy
-        run: |
-          echo "About to run script" >> $GITHUB_OUTPUT
-          echo "kubectl version = $kubectl-version" >> $GITHUB_OUTPUT
-          echo "kubectl base64 kube config = $base64-kube-config" >> $GITHUB_OUTPUT
-          ./scripts/deploy.sh
+        run: ./scripts/deploy.sh

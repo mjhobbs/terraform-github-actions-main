@@ -57,4 +57,8 @@ resource "azurerm_kubernetes_cluster" "example" {
   tags = {
     Environment = "Production"
   }
+
+  // These two are required!
+  oidc_issuer_enabled       = true
+  workload_identity_enabled = true
 }

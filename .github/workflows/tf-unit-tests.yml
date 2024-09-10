@@ -1,7 +1,16 @@
 name: 'Terraform Unit Tests'
 
 on:
-  push:
+  # #
+  # # Deploys the microservice on push to the main branch of this code repository.
+  # #
+  #push:
+  
+  #
+  # Allows deployment to be invoked manually through the GitHub Actions user interface.
+  #
+  workflow_dispatch: 
+
 
 permissions:
   security-events: write # Needed to upload-sarif

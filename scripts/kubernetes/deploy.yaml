@@ -24,6 +24,7 @@ spec:
       containers: 
       - name: video-streaming
         #image: $CONTAINER_REGISTRY/video-streaming:$VERSION
+        image: githubactions2024.azurecr.io/video-streaming:1
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT

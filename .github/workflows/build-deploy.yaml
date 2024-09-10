@@ -39,7 +39,7 @@ env:
   CONTAINER_NAME: "video-streaming"
   RESOURCE_GROUP: "rg-terraform-github-actions"
   CLUSTER_NAME: "example-aks1"
-  #DEPLOYMENT_MANIFEST_PATH: "your-deployment-manifest-path"
+  DEPLOYMENT_MANIFEST_PATH: "terraform-github-actions-manifest"
 
 jobs:
   buildImage:
@@ -103,6 +103,6 @@ jobs:
         uses: Azure/k8s-deploy@v4
         with:
           action: deploy
-          #manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}

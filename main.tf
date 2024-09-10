@@ -32,34 +32,10 @@ resource "azurerm_resource_group" "rg-aks" {
 #
 resource "azurerm_container_registry" "container_registry" {
   name                = var.app_name
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.rg-aks.name
   location            = var.location
   admin_enabled       = true
   sku                 = "Basic"
-}
-
-
-resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks1"
-  # location            = azurerm_resource_group.rg-aks.location
-  # resource_group_name = azurerm_resource_group.rg-aks.name
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  dns_prefix          = "exampleaks1"
-
-  default_node_pool {
-    name       = "default"
-    node_count = 1
-    vm_size    = "Standard_D2_v2"
-  }
-
-  identity {
-    type = "SystemAssigned"
-  }
-
-  tags = {
-    Environment = "Production"
-  }
 }
 
 # resource "azurerm_kubernetes_cluster" "cluster" {

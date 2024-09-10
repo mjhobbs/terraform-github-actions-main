@@ -39,7 +39,7 @@ env:
   CONTAINER_NAME: "video-streaming"
   RESOURCE_GROUP: "rg-terraform-github-actions"
   CLUSTER_NAME: "example-aks1"
-  DEPLOYMENT_MANIFEST_PATH: "terraform-github-actions-manifest"
+  DEPLOYMENT_MANIFEST_PATH: "./scripts/kubernetes/deploy.yaml"
 
 jobs:
   buildImage:

@@ -42,7 +42,7 @@ env:
   DEPLOYMENT_MANIFEST_PATH: "./scripts/kubernetes/deploy.yaml"
   # FIX: Tidy this up so we only have one env variable with container reg name
   CONTAINER_REGISTRY: "githubactions2024"
-  VERSION: "latest"
+  VERSION: "66"
 
 jobs:
   buildImage:

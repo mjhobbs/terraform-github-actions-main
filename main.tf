@@ -62,7 +62,7 @@ resource "azurerm_kubernetes_cluster" "example" {
   oidc_issuer_enabled       = true
   workload_identity_enabled = true
 
-  depends_on                        = [azurerm_container_registry.container_registry]
+  depends_on                = [azurerm_container_registry.container_registry]
 }
 
 #
